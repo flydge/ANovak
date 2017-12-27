@@ -1,4 +1,6 @@
-﻿namespace Task1
+﻿using System;
+
+namespace Task1
 {
     public class Student
     {
@@ -6,19 +8,26 @@
         private string lastName;
         private int age;
         private Mark[] marksPool;
+       
+      
 
-        public Student()
+        public Student(Mark[] marksPool=null ,string firstName = "firstName not specified", 
+            string lastName = "lastNamenot specified",int age = 0)
         {
-        }
-
-        public Student(string firstName, string lastName, int age, Mark[] marksPool)
-        {
+            
+            if (marksPool==null)
+            {
+                marksPool = new Mark[] { };
+            }
+            
             this.firstName = firstName;
             this.lastName = lastName;
             this.age = age;
             this.marksPool = marksPool;
+            
         }
 
+        
         public string FirstNameProp
         {
             get => firstName;
@@ -46,10 +55,10 @@
         public string GetingStrMarksPool()
         {
             string marksString = null;
-            foreach (var VARIABLE in marksPool)
+            foreach (var mark in marksPool)
             {
-                marksString += VARIABLE.SubjectNameProp + "||" +
-                               VARIABLE.SubjectMarkProp + "\n";
+                marksString += mark.SubjectNameProp + "|| mark:" +
+                               mark.SubjectMarkProp + "\n";
             }
             return marksString;
         }
@@ -57,28 +66,32 @@
         public float GetAvgMark()
         {
             int avgMark = 0;
-            foreach (var VARIABLE in marksPool)
+            foreach (var mark in marksPool)
             {
-                avgMark +=VARIABLE.SubjectMarkProp ;
+                avgMark +=mark.SubjectMarkProp ;
             }
-            
-            return avgMark / marksPool.Length;
+
+            avgMark = avgMark == 0 ? 0 : avgMark / marksPool.Length;
+            return avgMark ;
         }
 
         public void ResetAllMarks()
         {
-            foreach (var VARIABLE in marksPool)
+            foreach (var mark in marksPool)
             {
-                VARIABLE.SubjectMarkProp = 0 ;
+                mark.SubjectMarkProp = 0 ;
             }
            
         }
 
         public override string ToString()
         {
-            return  "FirstName: "+firstName + "||" + "LastName:"+lastName+
-                    "||" + "Age:"+age+ "|| \n"+ GetingStrMarksPool()+ "\n"+
-                    "AvgMark:"+GetAvgMark();
+            string stringForm = "FirstName:{0,-10} LastName:{1,-10} " +
+                                "Age:{2,-4} AvgMark:{3,-4} \n{4}";
+            string stringOutput = string.Format(stringForm, firstName,lastName,
+                age, GetAvgMark(),GetingStrMarksPool());
+            return stringOutput;
+            
         }
     }
 }

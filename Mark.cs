@@ -9,7 +9,7 @@
         {
         }
 
-        public Mark(string subjectName, int subjectMark)
+        public Mark(string subjectName = "SubjectName not specified", int subjectMark = 0) 
         {
             SubjectName = subjectName;
             SubjectMark = subjectMark;
