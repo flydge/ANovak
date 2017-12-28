@@ -71,7 +71,15 @@ namespace Task1
                 avgMark +=mark.SubjectMarkProp ;
             }
 
-            avgMark = avgMark == 0 ? 0 : avgMark / marksPool.Length;
+            if (avgMark == 0)
+            {
+                avgMark = 0;
+            }
+            else
+            {
+                avgMark = avgMark / marksPool.Length;
+            }
+            
             return avgMark ;
         }
 

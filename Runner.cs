@@ -19,10 +19,10 @@ namespace Task1
                 marksArr[i] = new Mark("SubjectName:"+i, i);
                
             }
-            //Student student = new Student();   // using optional arguments
+            // Student student = new Student();   // using optional arguments
             Student student = new Student(firstName:"Artyom",lastName:"Novak"
                 ,age:21,marksPool:marksArr);
-           // student.ResetAllMarks();  //all student’s marks equal to zero
+            // student.ResetAllMarks();  //all student’s marks equal to zero
             Console.WriteLine(student);
          
 
