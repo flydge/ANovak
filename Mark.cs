@@ -5,10 +5,7 @@
         private string SubjectName;
         private int SubjectMark;
 
-        public Mark()
-        {
-        }
-
+        
         public Mark(string subjectName = "SubjectName not specified", int subjectMark = 0) 
         {
             SubjectName = subjectName;
