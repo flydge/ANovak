@@ -11,20 +11,13 @@ namespace Task1
        
       
 
-        public Student(Mark[] marksPool=null ,string firstName = "firstName not specified", 
-            string lastName = "lastNamenot specified",int age = 0)
+        public Student(Mark[] marksPool = null ,string firstName = "firstName not specified", 
+            string lastName = "lastName not specified",int age = 0)
         {
-            
-            if (marksPool==null)
-            {
-                marksPool = new Mark[] { };
-            }
-            
             this.firstName = firstName;
             this.lastName = lastName;
             this.age = age;
             this.marksPool = marksPool;
-            
         }
 
         
@@ -55,10 +48,17 @@ namespace Task1
         public string GetingStrMarksPool()
         {
             string marksString = null;
-            foreach (var mark in marksPool)
+            if (marksPool != null)
             {
-                marksString += mark.SubjectNameProp + "|| mark:" +
-                               mark.SubjectMarkProp + "\n";
+                foreach (var mark in marksPool)
+                {
+                    marksString += mark.SubjectNameProp + "|| mark:" +
+                                   mark.SubjectMarkProp + "\n";
+                }
+            }
+            else
+            {
+                marksString = "marks is empty";
             }
             return marksString;
         }
@@ -66,20 +66,15 @@ namespace Task1
         public float GetAvgMark()
         {
             int avgMark = 0;
-            foreach (var mark in marksPool)
+            if (marksPool != null)
             {
-                avgMark +=mark.SubjectMarkProp ;
-            }
-
-            if (avgMark == 0)
-            {
-                avgMark = 0;
-            }
-            else
-            {
+                foreach (var mark in marksPool)
+                {
+                    avgMark += mark.SubjectMarkProp;
+                }
                 avgMark = avgMark / marksPool.Length;
             }
-            
+           
             return avgMark ;
         }
 
