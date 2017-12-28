@@ -65,7 +65,7 @@ namespace Task1
 
         public float GetAvgMark()
         {
-            int avgMark = 0;
+            float avgMark = 0;
             if (marksPool != null)
             {
                 foreach (var mark in marksPool)
